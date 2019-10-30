@@ -112,3 +112,65 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+
+//grabbing parent element to append data to
+const body = document.querySelector('body');
+data.forEach(info => {
+  body.appendChild(createArticle(info.title, info.date, info.first, info.second, info.third))
+});
+
+//creating Function
+function createArticle (title, date, first, second, third){
+//defining new elements
+const wholeArticle = document.createElement('div');
+const title = docucment.createElement('h2');
+const date = document.createElement('p');
+const firstParagraph = document.createElement('p');
+const secondParagraph = document.createElement('p');
+const thirdParagraph = document.createElement('p');
+const expand = document.createElement('span');
+//setting up structure
+wholeArticle.appendChild(title);
+wholeArticle.appendChild(date);
+wholeArticle.appendChild(firstParagraph);
+wholeArticle.appendChild(secondParagraph);
+wholeArticle.appendChild(thirdParagraph);
+wholeArticle.appendChild(expand);
+//setting up classes
+wholeArticle.classList.add('article');
+// wholeArticle.classList.add('article-open')
+date.classList.add('date');
+expand.classList.add('expandButton');
+//text content
+title.textContent = title;
+date.textContent = date;
+firstParagraph.textContent = first;
+secondParagraph.textContent = second;
+thirdParagraph.textContent = third;
+//EventListener
+expand.addEventListener('click', () => {
+wholeArticle.classList.toggle('article-open');
+})
+
+return wholeArticle
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

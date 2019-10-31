@@ -116,44 +116,55 @@ const data = [
 
 //grabbing parent element to append data to
 const body = document.querySelector('body');
-data.forEach(info => {
-  body.appendChild(createArticle(info.title, info.date, info.first, info.second, info.third))
+data.forEach(info => {  
+  body.appendChild(createArticle(info.title, info.date, info.firstParagraph, info.secondParagraph, info.thirdParagraph))
 });
 
 //creating Function
 function createArticle (title, date, first, second, third){
 //defining new elements
-const wholeArticle = document.createElement('div');
-const title = docucment.createElement('h2');
-const date = document.createElement('p');
-const firstParagraph = document.createElement('p');
-const secondParagraph = document.createElement('p');
-const thirdParagraph = document.createElement('p');
-const expand = document.createElement('span');
-//setting up structure
-wholeArticle.appendChild(title);
-wholeArticle.appendChild(date);
-wholeArticle.appendChild(firstParagraph);
-wholeArticle.appendChild(secondParagraph);
-wholeArticle.appendChild(thirdParagraph);
-wholeArticle.appendChild(expand);
-//setting up classes
-wholeArticle.classList.add('article');
-// wholeArticle.classList.add('article-open')
-date.classList.add('date');
-expand.classList.add('expandButton');
-//text content
-title.textContent = title;
-date.textContent = date;
-firstParagraph.textContent = first;
-secondParagraph.textContent = second;
-thirdParagraph.textContent = third;
-//EventListener
-expand.addEventListener('click', () => {
-wholeArticle.classList.toggle('article-open');
-})
+  const wholeArticle = document.createElement('div');
+  const articleh2 = document.createElement('h2');
+  const articleDate = document.createElement('p');
+  const firstParagraph = document.createElement('p');
+  const secondParagraph = document.createElement('p');
+  const thirdParagraph = document.createElement('p');
+  const expand = document.createElement('span');
+  const buttonOpen = document.createElement('button');
+  const buttonClose = document.createElement('button');
+  //setting up structure
+  wholeArticle.appendChild(articleh2);
+  wholeArticle.appendChild(articleDate);
+  wholeArticle.appendChild(firstParagraph);
+  wholeArticle.appendChild(secondParagraph);
+  wholeArticle.appendChild(thirdParagraph);
+  wholeArticle.appendChild(expand);
+  expand.appendChild(buttonOpen);
+  expand.appendChild(buttonClose);
+  //setting up classes
+  wholeArticle.classList.add('article'); 
+  articleDate.classList.add('date');
+  expand.classList.add('expandButton');
+  buttonOpen.classList.add('btn-open');
+  buttonClose.classList.add('btn-close', 'hide-btn');
+  //text content
+  articleh2.textContent = title;
+  articleDate.textContent = date;
+  firstParagraph.textContent = first;
+  secondParagraph.textContent = second;
+  thirdParagraph.textContent = third;
+  buttonOpen.textContent = 'expand';
+  buttonClose.textContent = 'close';
 
-return wholeArticle
+  //EventListener
+  expand.addEventListener('click', () => {
+    wholeArticle.classList.toggle('article-open');
+    buttonOpen.classList.toggle('hide-btn');
+    buttonClose.classList.toggle('hide-btn');
+    
+  })
+
+  return wholeArticle
 }
 
 
@@ -173,4 +184,3 @@ return wholeArticle
 
 
 
-}
